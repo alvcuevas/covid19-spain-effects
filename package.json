@@ -1,15 +1,12 @@
 {
-  "homepage": "https://alvcuevas.github.io/covid19",
   "name": "covid19",
   "version": "0.1.0",
-  "proxy": "https://spanish-api-covid19.pedelriomarron.now.sh",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "deploygh": "gh-pages -d build"
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -22,7 +19,6 @@
   },
   "devDependencies": {
     "axios": "^0.19.2",
-    "gh-pages": "^2.2.0",
     "node-sass": "^4.13.1",
     "react-loader-spinner": "^3.1.5",
     "react-router-dom": "^5.1.2"
