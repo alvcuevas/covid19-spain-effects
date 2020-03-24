@@ -9,15 +9,14 @@ body {
 }
 
 .wrapper {
-  padding: 0;
+  padding: 3%;
   margin: 0;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 3%;
 
-  .header, .content {
+  .header,
+  .content {
     width: 50%;
   }
 }
@@ -32,4 +31,11 @@ body {
       margin-right: 12px;
     }
   }
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
 }
