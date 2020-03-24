@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f6f6f6; //f6f6f6
 }
 
 .wrapper {
@@ -13,14 +14,19 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  margin-top: 3%;
+
+  .header, .content {
+    width: 50%;
+  }
 }
 
 .navigation {
   ul {
     display: flex;
     list-style-type: none;
+    padding-left: 0px;
 
     li {
       margin-right: 12px;

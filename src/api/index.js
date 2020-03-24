@@ -14,9 +14,7 @@ const fetchSummary = async () => {
 
 const fetchRegions = async () => {
     const { data } = await axios.get(`/api/regions`);
-    return {
-        regions: data.regions
-    };
+    return data;
 };
 
 const fetchRegion = async region => {

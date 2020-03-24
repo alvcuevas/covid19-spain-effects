@@ -15,21 +15,30 @@ const App = () => {
                         <ul>
                             <li>
                                 <Link to='/'>
-                                    <button>Datos actuales</button>
+                                    <button>Datos generales</button>
                                 </Link>
                             </li>
                             <li>
                                 <Link to='/regions'>
-                                    <button>Datos por región</button>
+                                    <button>Datos por comunidad</button>
                                 </Link>
                             </li>
                         </ul>
                     </nav>
                 </div>
-                <Switch>
-                    <Route exact path={'/'} render={() => <SummaryView />} />
-                    <Route path={'/regions'} render={() => <RegionsView />} />
-                </Switch>
+                <div className='content'>
+                    <Switch>
+                        <Route
+                            exact
+                            path={'/'}
+                            render={() => <SummaryView />}
+                        />
+                        <Route
+                            path={'/regions'}
+                            render={() => <RegionsView />}
+                        />
+                    </Switch>
+                </div>
             </div>
         </BrowserRouter>
     );
