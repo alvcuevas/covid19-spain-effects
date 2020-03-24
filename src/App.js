@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
+import SummaryView from './views/summary/summary';
+import RegionsView from './views/regions/regions';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import './App.scss';
+
+const App = () => {
+    return (
+        <BrowserRouter>
+            <div className='wrapper'>
+                <div className='header'>
+                    Datos en tiempo real sobre el efecto del COVID-19 en España
+                    <nav className='navigation'>
+                        <ul>
+                            <li>
+                                <Link to='/'>
+                                    <button>Datos actuales</button>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to='/regions'>
+                                    <button>Datos por región</button>
+                                </Link>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <Switch>
+                    <Route exact path={'/'} render={() => <SummaryView />} />
+                    <Route path={'/regions'} render={() => <RegionsView />} />
+                </Switch>
+            </div>
+        </BrowserRouter>
+    );
+};
 
 export default App;
