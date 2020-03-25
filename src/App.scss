@@ -40,3 +40,15 @@ body {
   align-items: center;
   height: 350px;
 }
+
+@media only screen and (max-device-width: 500px) {
+  .regions, .summary {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-device-width: 850px) {
+  .regions, .summary {
+    width: 100%;
+  }
+}
