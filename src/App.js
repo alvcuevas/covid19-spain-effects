@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import SummaryView from './views/summary/summary';
 import RegionsView from './views/regions/regions';
+import GlobalView from './views/global/global';
 
 import './App.scss';
 
@@ -18,12 +19,17 @@ const App = () => {
                         <ul>
                             <li>
                                 <Link to='/'>
-                                    <button>Datos generales</button>
+                                    <button>Efectos nacionalidad</button>
                                 </Link>
                             </li>
                             <li>
                                 <Link to='/regions'>
-                                    <button>Datos por comunidad</button>
+                                    <button>Efectos comunidades</button>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={'/global'}>
+                                    <button>Efectos mundiales</button>
                                 </Link>
                             </li>
                         </ul>
@@ -40,6 +46,7 @@ const App = () => {
                             path={'/regions'}
                             render={() => <RegionsView />}
                         />
+                        <Route path={'/global'} render={() => <GlobalView />} />
                     </Switch>
                 </div>
             </div>
