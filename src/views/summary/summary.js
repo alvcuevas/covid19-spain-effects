@@ -139,7 +139,7 @@ const SummaryView = () => {
                     data={barsData}
                     keys={['totales', 'estimados']}
                     indexBy='status'
-                    margin={{ top: 25, right: 130, bottom: 50, left: 60 }}
+                    margin={{ top: 25, right: 130, bottom: 100, left: 60 }}
                     padding={0.25}
                     groupMode='grouped'
                     colors={{ scheme: 'nivo' }}
@@ -209,16 +209,25 @@ const SummaryView = () => {
                     legends={[
                         {
                             dataFrom: 'keys',
-                            anchor: 'right',
-                            direction: 'column',
+                            anchor: 'bottom',
+                            direction: 'row',
                             justify: false,
-                            translateX: 114,
-                            translateY: 37,
-                            itemWidth: 96,
-                            itemHeight: 20,
-                            itemsSpacing: 9,
-                            symbolSize: 20,
-                            itemDirection: 'left-to-right'
+                            translateX: -19,
+                            translateY: 90,
+                            itemsSpacing: 4,
+                            itemWidth: 82,
+                            itemHeight: 55,
+                            itemDirection: 'left-to-right',
+                            itemOpacity: 0.85,
+                            symbolSize: 19,
+                            effects: [
+                                {
+                                    on: 'hover',
+                                    style: {
+                                        itemOpacity: 1
+                                    }
+                                }
+                            ]
                         }
                     ]}
                     animate={true}
