@@ -89,8 +89,8 @@ const SummaryView = () => {
     // };
 
     const renderSpinner = () => (
-        <div className='loader'>
-            <Spinner />
+        <div className="loader">
+            <Spinner color={'#E8C1A0'} />
         </div>
     );
 
@@ -134,15 +134,15 @@ const SummaryView = () => {
             }
         ];
         return (
-            <div className='summary'>
+            <div className="summary">
                 <ResponsiveBar
                     data={barsData}
                     keys={['totales', 'estimados']}
-                    indexBy='status'
+                    indexBy="status"
                     margin={{ top: 25, right: 130, bottom: 100, left: 60 }}
                     padding={0.25}
-                    groupMode='grouped'
-                    colors={{ scheme: 'nivo' }}
+                    groupMode="grouped"
+                    colors={{ scheme: 'pastel2' }}
                     defs={[
                         {
                             id: 'dots',
