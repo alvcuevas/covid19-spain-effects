@@ -60,70 +60,75 @@ const GlobalView = () => {
         const formatted = date.toLocaleString();
         return (
             <>
-                <ResponsiveLine
-                    data={graphData}
-                    margin={{ top: 20, right: 110, bottom: 100, left: 60 }}
-                    xScale={{
-                        type: 'time',
-                        format: '%Y-%m-%d',
-                        precision: 'day'
-                    }}
-                    xFormat='time:%Y-%m-%d'
-                    yScale={{
-                        type: 'linear',
-                        min: 'auto',
-                        max: 'auto',
-                        stacked: false
-                    }}
-                    curve='natural'
-                    axisTop={null}
-                    axisRight={null}
-                    axisBottom={{
-                        orient: 'bottom',
-                        tickSize: 5,
-                        tickPadding: 5,
-                        format: '%b %d',
-                        tickValues: `every 5 days`,
-                        tickRotation: 0
-                    }}
-                    colors={['#E60000', 'green']}
-                    pointSize={7}
-                    pointColor={{ theme: 'background' }}
-                    pointBorderWidth={2}
-                    pointBorderColor={{ from: 'serieColor' }}
-                    pointLabel='y'
-                    pointLabelYOffset={-12}
-                    areaBaselineValue={10}
-                    useMesh={true}
-                    legends={[
-                        {
-                            anchor: 'bottom',
-                            direction: 'row',
-                            justify: false,
-                            translateX: 1,
-                            translateY: 63,
-                            itemsSpacing: 0,
-                            itemDirection: 'left-to-right',
-                            itemWidth: 100,
-                            itemHeight: 20,
-                            itemOpacity: 0.75,
-                            symbolSize: 12,
-                            symbolShape: 'circle',
-                            symbolBorderColor: 'rgba(0, 0, 0, .5)',
-                            effects: [
-                                {
-                                    on: 'hover',
-                                    style: {
-                                        itemBackground: 'rgba(0, 0, 0, .03)',
-                                        itemOpacity: 1
+                <div className='global-graph'>
+                    <ResponsiveLine
+                        data={graphData}
+                        margin={{ top: 20, right: 110, bottom: 100, left: 60 }}
+                        xScale={{
+                            type: 'time',
+                            format: '%Y-%m-%d',
+                            precision: 'day'
+                        }}
+                        xFormat='time:%Y-%m-%d'
+                        yScale={{
+                            type: 'linear',
+                            min: 'auto',
+                            max: 'auto',
+                            stacked: false
+                        }}
+                        curve='natural'
+                        axisTop={null}
+                        axisRight={null}
+                        axisBottom={{
+                            orient: 'bottom',
+                            tickSize: 5,
+                            tickPadding: 5,
+                            format: '%b %d',
+                            tickValues: `every 5 days`,
+                            tickRotation: 0
+                        }}
+                        colors={['#E60000', 'green']}
+                        pointSize={7}
+                        pointColor={{ theme: 'background' }}
+                        pointBorderWidth={2}
+                        pointBorderColor={{ from: 'serieColor' }}
+                        pointLabel='y'
+                        pointLabelYOffset={-12}
+                        areaBaselineValue={10}
+                        useMesh={true}
+                        legends={[
+                            {
+                                anchor: 'bottom',
+                                direction: 'row',
+                                justify: false,
+                                translateX: 1,
+                                translateY: 63,
+                                itemsSpacing: 0,
+                                itemDirection: 'left-to-right',
+                                itemWidth: 100,
+                                itemHeight: 20,
+                                itemOpacity: 0.75,
+                                symbolSize: 12,
+                                symbolShape: 'circle',
+                                symbolBorderColor: 'rgba(0, 0, 0, .5)',
+                                effects: [
+                                    {
+                                        on: 'hover',
+                                        style: {
+                                            itemBackground:
+                                                'rgba(0, 0, 0, .03)',
+                                            itemOpacity: 1
+                                        }
                                     }
-                                }
-                            ]
-                        }
-                    ]}
-                />
+                                ]
+                            }
+                        ]}
+                    />
+                </div>
                 <div className='last_update'>
-                    <span>Última actualización - {formatted}</span>
+                    <span>
+                        Última actualización - <b>{formatted}</b>
+                    </span>
                 </div>
             </>
         );

@@ -1,4 +1,16 @@
-.regions {
+.regions-graph {
     width: 50%;
     height: 500px;
+}
+
+@media only screen and (max-device-width: 500px) {
+    .regions {
+        .region-selector {
+            display: flex;
+            justify-content: center;
+        }
+        .regions-graph {
+            width: 200vw;
+        }
+    }
 }

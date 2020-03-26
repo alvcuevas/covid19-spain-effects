@@ -4,3 +4,9 @@
   width: 50%;
   height: 500px;
 }
+
+@media only screen and (max-device-width: 500px) {
+  .summary {
+    width: 200vw;
+  }
+}

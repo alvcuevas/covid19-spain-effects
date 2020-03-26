@@ -50,14 +50,7 @@ const RegionsView = () => {
     }, [selectedRegion]);
 
     const renderRegions = () => (
-        // <select onChange={e => setSelectedRegion(e.target.value)}>
-        //     {regions.map(region => (
-        //         <option key={region.code} value={region.code}>
-        //             {region.name}
-        //         </option>
-        //     ))}
-        // </select>
-        <>
+        <div className='region-selector'>
             <Select
                 defaultValue='C. Valenciana'
                 style={{ width: 200 }}
@@ -68,7 +61,7 @@ const RegionsView = () => {
                     </Option>
                 ))}
             </Select>
-        </>
+        </div>
     );
 
     const renderSpinner = () => (
@@ -117,105 +110,99 @@ const RegionsView = () => {
             }
         ];
         return (
-            <ResponsiveBar
-                data={barsData}
-                keys={['totales', 'estimados']}
-                indexBy='status'
-                margin={{ top: 25, right: 130, bottom: 100, left: 60 }}
-                padding={0.25}
-                groupMode='grouped'
-                colors={{ scheme: 'set3' }}
-                defs={[
-                    {
-                        id: 'dots',
-                        type: 'patternDots',
-                        background: '#97e3d5',
-                        color: '#61cdbb',
-                        size: 4,
-                        padding: 1,
-                        stagger: true
-                    },
-                    {
-                        id: 'lines',
-                        type: 'patternLines',
-                        background: 'inherit',
-                        color: '#97e3d5',
-                        rotation: -45,
-                        lineWidth: 1,
-                        spacing: 10
-                    }
-                ]}
-                fill={[
-                    // {
-                    //     match: {
-                    //         id: 'totales'
-                    //     },
-                    //     id: 'dots'
-                    // },
-                    {
-                        match: {
-                            id: 'estimados'
+            <div className='regions-graph'>
+                <ResponsiveBar
+                    data={barsData}
+                    keys={['totales', 'estimados']}
+                    indexBy='status'
+                    margin={{ top: 25, right: 130, bottom: 100, left: 60 }}
+                    padding={0.25}
+                    groupMode='grouped'
+                    colors={{ scheme: 'set3' }}
+                    defs={[
+                        {
+                            id: 'dots',
+                            type: 'patternDots',
+                            background: '#97e3d5',
+                            color: '#61cdbb',
+                            size: 4,
+                            padding: 1,
+                            stagger: true
                         },
-                        id: 'dots'
-                    }
-                ]}
-                borderColor={{
-                    from: 'color',
-                    modifiers: [['darker', '1.6']]
-                }}
-                axisTop={null}
-                axisRight={null}
-                axisBottom={{
-                    tickSize: 5,
-                    tickPadding: 5,
-                    tickRotation: 0,
-                    // legend: 'status',
-                    legendPosition: 'middle',
-                    legendOffset: 32
-                }}
-                axisLeft={{
-                    tickSize: 5,
-                    tickPadding: 5,
-                    tickRotation: 0,
-                    // legend: 'food',
-                    legendPosition: 'middle',
-                    legendOffset: -40
-                }}
-                enableLabel={false}
-                labelSkipWidth={12}
-                labelSkipHeight={36}
-                labelTextColor={{
-                    from: 'color',
-                    modifiers: [['darker', 1.6]]
-                }}
-                legends={[
-                    {
-                        dataFrom: 'keys',
-                        anchor: 'bottom',
-                        direction: 'row',
-                        justify: false,
-                        translateX: -19,
-                        translateY: 90,
-                        itemsSpacing: 4,
-                        itemWidth: 82,
-                        itemHeight: 55,
-                        itemDirection: 'left-to-right',
-                        itemOpacity: 0.85,
-                        symbolSize: 19,
-                        effects: [
-                            {
-                                on: 'hover',
-                                style: {
-                                    itemOpacity: 1
+                        {
+                            id: 'lines',
+                            type: 'patternLines',
+                            background: 'inherit',
+                            color: '#97e3d5',
+                            rotation: -45,
+                            lineWidth: 1,
+                            spacing: 10
+                        }
+                    ]}
+                    fill={[
+                        {
+                            match: {
+                                id: 'estimados'
+                            },
+                            id: 'dots'
+                        }
+                    ]}
+                    borderColor={{
+                        from: 'color',
+                        modifiers: [['darker', '1.6']]
+                    }}
+                    axisTop={null}
+                    axisRight={null}
+                    axisBottom={{
+                        tickSize: 5,
+                        tickPadding: 5,
+                        tickRotation: 0,
+                        legendPosition: 'middle',
+                        legendOffset: 32
+                    }}
+                    axisLeft={{
+                        tickSize: 5,
+                        tickPadding: 5,
+                        tickRotation: 0,
+                        legendPosition: 'middle',
+                        legendOffset: -40
+                    }}
+                    enableLabel={false}
+                    labelSkipWidth={12}
+                    labelSkipHeight={36}
+                    labelTextColor={{
+                        from: 'color',
+                        modifiers: [['darker', 1.6]]
+                    }}
+                    legends={[
+                        {
+                            dataFrom: 'keys',
+                            anchor: 'bottom',
+                            direction: 'row',
+                            justify: false,
+                            translateX: -19,
+                            translateY: 90,
+                            itemsSpacing: 4,
+                            itemWidth: 82,
+                            itemHeight: 55,
+                            itemDirection: 'left-to-right',
+                            itemOpacity: 0.85,
+                            symbolSize: 19,
+                            effects: [
+                                {
+                                    on: 'hover',
+                                    style: {
+                                        itemOpacity: 1
+                                    }
                                 }
-                            }
-                        ]
-                    }
-                ]}
-                animate={true}
-                motionStiffness={90}
-                motionDamping={15}
-            />
+                            ]
+                        }
+                    ]}
+                    animate={true}
+                    motionStiffness={90}
+                    motionDamping={15}
+                />
+            </div>
         );
     };
 

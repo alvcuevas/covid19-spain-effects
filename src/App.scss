@@ -50,15 +50,32 @@ span {
 }
 
 @media only screen and (max-device-width: 500px) {
-    .regions,
-    .summary {
-        width: 100%;
-    }
-}
+    .header {
+        padding: 15px 15px 0px 15px;
 
-@media only screen and (max-device-width: 850px) {
-    .regions,
-    .summary {
-        width: 100%;
+        .title {
+            text-align: center;
+        }
+    
+        .navigation {
+            ul {
+                flex-direction: column;
+    
+                li {
+                    display: flex;
+                    justify-content: center;
+                    margin-bottom: 10px;
+
+                    button {
+                        width: 200px;
+                    }
+                }
+            }
+        }
+    }
+    .content {
+        .mobile-suggest {
+            text-align: center;
+        }
     }
 }

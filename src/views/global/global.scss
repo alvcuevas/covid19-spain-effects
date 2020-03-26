@@ -1,5 +1,8 @@
 .global {
-    height: 500px;
+    .global-graph {
+        height: 500px;
+        width: 100%;
+    }
 
     .global-summary {
         display: flex;
@@ -28,5 +31,24 @@
 
     .last_update span {
         font-size: 13px;
+    }
+}
+
+@media only screen and (max-device-width: 500px) {
+    .global {
+        .global-summary {
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        .global-graph {
+            height: 100vw;
+            width: 250vw;
+        }
+    
+        .last_update {
+            display: flex;
+            justify-content: center;
+        }
     }
 }

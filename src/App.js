@@ -4,15 +4,17 @@ import SummaryView from './views/summary/summary';
 import RegionsView from './views/regions/regions';
 import GlobalView from './views/global/global';
 import { Button } from 'antd';
+import useMobile from './hooks/useMobile';
 
 import './App.scss';
 
 const App = () => {
+    const isMobile = useMobile();
     return (
         <BrowserRouter>
             <div className='wrapper'>
                 <div className='header'>
-                    <span>
+                    <span className='title'>
                         Representación en tiempo real de los efectos del
                         COVID-19 en España
                     </span>
@@ -21,14 +23,14 @@ const App = () => {
                             <li>
                                 <Link to='/'>
                                     <Button type='default'>
-                                        Efecto en país
+                                        Efectos en país
                                     </Button>
                                 </Link>
                             </li>
                             <li>
                                 <Link to='/regions'>
                                     <Button type='default'>
-                                        Efecto por comunidad
+                                        Efectos por comunidad
                                     </Button>
                                 </Link>
                             </li>
@@ -55,6 +57,11 @@ const App = () => {
                         />
                         <Route path={'/global'} render={() => <GlobalView />} />
                     </Switch>
+                    {isMobile && (
+                        <span className='mobile-suggest'>
+                            Desliza para ver las gráficas en detalle
+                        </span>
+                    )}
                 </div>
             </div>
         </BrowserRouter>
