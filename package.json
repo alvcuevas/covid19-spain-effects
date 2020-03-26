@@ -9,13 +9,15 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@nivo/bar": "^0.61.1",
+    "@nivo/line": "^0.61.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "antd": "^4.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
-    "recharts": "^1.8.5"
+    "react-scripts": "3.4.1"
   },
   "devDependencies": {
     "axios": "^0.19.2",

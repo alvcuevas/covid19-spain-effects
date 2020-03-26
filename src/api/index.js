@@ -1,8 +1,9 @@
 import axios from 'axios';
-const API_URL = 'https://spanish-api-covid19.pedelriomarron.now.sh';
+const API_SPAIN = 'https://spanish-api-covid19.pedelriomarron.now.sh/api';
+const API_INTER = 'https://covid19.mathdro.id/api';
 
 const fetchSummary = async () => {
-    const { data } = await axios.get(`${API_URL}/api`);
+    const { data } = await axios.get(`${API_SPAIN}`);
     return {
         confirmed: data.confirmed,
         recovered: data.recovered,
@@ -13,12 +14,12 @@ const fetchSummary = async () => {
 };
 
 const fetchRegions = async () => {
-    const { data } = await axios.get(`${API_URL}/api/regions`);
+    const { data } = await axios.get(`${API_SPAIN}/regions`);
     return data;
 };
 
 const fetchRegion = async region => {
-    const { data } = await axios.get(`${API_URL}/api/regions/${region}`);
+    const { data } = await axios.get(`${API_SPAIN}/regions/${region}`);
     return {
         confirmed: data.confirmed,
         recovered: data.recovered,
@@ -28,4 +29,21 @@ const fetchRegion = async region => {
     };
 };
 
-export { fetchSummary, fetchRegions, fetchRegion };
+const fetchDaily = async () => {
+    const { data } = await axios.get(`${API_INTER}/daily`);
+    return data;
+};
+
+const fetchWorldSummary = async () => {
+    const { data } = await axios.get(`${API_INTER}`);
+    const { confirmed, recovered, deaths, lastUpdate } = data;
+    return { confirmed, recovered, deaths, lastUpdate };
+};
+
+export {
+    fetchSummary,
+    fetchRegions,
+    fetchRegion,
+    fetchDaily,
+    fetchWorldSummary
+};

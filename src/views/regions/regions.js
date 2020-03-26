@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import {
-    BarChart,
-    Bar,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    Legend,
-    ResponsiveContainer
-} from 'recharts';
 import { fetchRegions, fetchRegion } from '../../api';
+import { ResponsiveBar } from '@nivo/bar';
 import Spinner from '../../components/spinner';
+import { Select } from 'antd';
 
 import './regions.scss';
+const { Option } = Select;
 
 const RegionsView = () => {
     const [data, setData] = useState(null);
@@ -28,10 +21,7 @@ const RegionsView = () => {
                 const { regions } = res;
 
                 let regionsArr = [];
-                Object.values(regions).forEach(reg => {
-                    // let test = { id: reg[0], value: reg[1] };
-                    regionsArr.push(reg);
-                });
+                Object.values(regions).forEach(reg => regionsArr.push(reg));
                 setRegions(regionsArr);
             } catch (err) {
                 setError(err);
@@ -60,78 +50,174 @@ const RegionsView = () => {
     }, [selectedRegion]);
 
     const renderRegions = () => (
-        <select onChange={e => setSelectedRegion(e.target.value)}>
-            {regions.map(region => (
-                <option key={region.code} value={region.code}>
-                    {region.name}
-                </option>
-            ))}
-        </select>
+        // <select onChange={e => setSelectedRegion(e.target.value)}>
+        //     {regions.map(region => (
+        //         <option key={region.code} value={region.code}>
+        //             {region.name}
+        //         </option>
+        //     ))}
+        // </select>
+        <>
+            <Select
+                defaultValue='C. Valenciana'
+                style={{ width: 200 }}
+                onChange={value => setSelectedRegion(value)}>
+                {regions.map(region => (
+                    <Option key={region.code} value={region.code}>
+                        {region.name}
+                    </Option>
+                ))}
+            </Select>
+        </>
+    );
+
+    const renderSpinner = () => (
+        <div className='loader'>
+            <Spinner color={'#E8C1A0'} />
+        </div>
     );
 
     const renderGraph = () => {
         const { confirmed, recovered, deaths, hospitalized, uci } = data;
-
-        const plot = [
+        const barsData = [
             {
-                name: 'Confirmados',
+                status: 'Confirmados',
                 totales: confirmed.value,
-                estimados: confirmed.estimateTomorrow
+                totalesColor: 'hsl(175, 70%, 50%)',
+                estimados: confirmed.estimateTomorrow,
+                estimadosColor: 'hsl(172, 70%, 50%)'
             },
             {
-                name: 'Recuperados',
+                status: 'Recuperados',
                 totales: recovered.value,
-                estimados: recovered.estimateTomorrow
+                totalesColor: 'hsl(175, 70%, 50%)',
+                estimados: recovered.estimateTomorrow,
+                estimadosColor: 'hsl(32, 70%, 50%)'
             },
             {
-                name: 'Muertos',
+                status: 'Muertos',
                 totales: deaths.value,
-                estimados: deaths.estimateTomorrow
+                totalesColor: 'hsl(175, 70%, 50%)',
+                estimados: deaths.estimateTomorrow,
+                estimadosColor: 'hsl(323, 70%, 50%)'
             },
             {
-                name: 'Hospitalizados',
+                status: 'Hospitalizados',
                 totales: hospitalized.value,
-                estimados: hospitalized.estimateTomorrow
+                totalesColor: 'hsl(175, 70%, 50%)',
+                estimados: hospitalized.estimateTomorrow,
+                estimadosColor: 'hsl(273, 70%, 50%)'
             },
-            { name: 'UCI', totales: uci.value, estimados: uci.estimateTomorrow }
+            {
+                status: 'UCI',
+                totales: uci.value,
+                totalesColor: 'hsl(175, 70%, 50%)',
+                estimados: uci.estimateTomorrow,
+                estimadosColor: 'hsl(73, 70%, 50%)'
+            }
         ];
-
         return (
-            <ResponsiveContainer>
-                <BarChart
-                    width={800}
-                    height={350}
-                    data={plot}
-                    margin={{
-                        top: 20
-                    }}>
-                    <CartesianGrid strokeDasharray='3 3' />
-                    <XAxis dataKey='name' />
-                    <YAxis
-                        domain={[0, 'auto']}
-                        yAxisId='left'
-                        orientation='left'
-                        stroke='#8884d8'
-                    />
-                    <YAxis
-                        yAxisId='right'
-                        orientation='right'
-                        stroke='#82ca9d'
-                    />
-                    <Tooltip />
-                    <Legend />
-                    <Bar yAxisId='left' dataKey='totales' fill='#8884d8' />
-                    <Bar yAxisId='right' dataKey='estimados' fill='#82ca9d' />
-                </BarChart>
-            </ResponsiveContainer>
+            <ResponsiveBar
+                data={barsData}
+                keys={['totales', 'estimados']}
+                indexBy='status'
+                margin={{ top: 25, right: 130, bottom: 100, left: 60 }}
+                padding={0.25}
+                groupMode='grouped'
+                colors={{ scheme: 'set3' }}
+                defs={[
+                    {
+                        id: 'dots',
+                        type: 'patternDots',
+                        background: '#97e3d5',
+                        color: '#61cdbb',
+                        size: 4,
+                        padding: 1,
+                        stagger: true
+                    },
+                    {
+                        id: 'lines',
+                        type: 'patternLines',
+                        background: 'inherit',
+                        color: '#97e3d5',
+                        rotation: -45,
+                        lineWidth: 1,
+                        spacing: 10
+                    }
+                ]}
+                fill={[
+                    // {
+                    //     match: {
+                    //         id: 'totales'
+                    //     },
+                    //     id: 'dots'
+                    // },
+                    {
+                        match: {
+                            id: 'estimados'
+                        },
+                        id: 'dots'
+                    }
+                ]}
+                borderColor={{
+                    from: 'color',
+                    modifiers: [['darker', '1.6']]
+                }}
+                axisTop={null}
+                axisRight={null}
+                axisBottom={{
+                    tickSize: 5,
+                    tickPadding: 5,
+                    tickRotation: 0,
+                    // legend: 'status',
+                    legendPosition: 'middle',
+                    legendOffset: 32
+                }}
+                axisLeft={{
+                    tickSize: 5,
+                    tickPadding: 5,
+                    tickRotation: 0,
+                    // legend: 'food',
+                    legendPosition: 'middle',
+                    legendOffset: -40
+                }}
+                enableLabel={false}
+                labelSkipWidth={12}
+                labelSkipHeight={36}
+                labelTextColor={{
+                    from: 'color',
+                    modifiers: [['darker', 1.6]]
+                }}
+                legends={[
+                    {
+                        dataFrom: 'keys',
+                        anchor: 'bottom',
+                        direction: 'row',
+                        justify: false,
+                        translateX: -19,
+                        translateY: 90,
+                        itemsSpacing: 4,
+                        itemWidth: 82,
+                        itemHeight: 55,
+                        itemDirection: 'left-to-right',
+                        itemOpacity: 0.85,
+                        symbolSize: 19,
+                        effects: [
+                            {
+                                on: 'hover',
+                                style: {
+                                    itemOpacity: 1
+                                }
+                            }
+                        ]
+                    }
+                ]}
+                animate={true}
+                motionStiffness={90}
+                motionDamping={15}
+            />
         );
     };
-
-    const renderSpinner = () => (
-        <div className='loader'>
-            <Spinner />
-        </div>
-    );
 
     return (
         <>

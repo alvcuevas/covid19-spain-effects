@@ -1,0 +1,32 @@
+.global {
+    height: 500px;
+
+    .global-summary {
+        display: flex;
+        padding-left: 10px;
+
+        div {
+            display: flex;
+            margin-right: 45px;
+        }
+
+        .confirmed__value, .recovered__value, .deaths__value {
+            margin-right: 7px;
+        }
+        .confirmed__title, .recovered__title, .deaths__title {
+            font-weight: bold;
+        }
+
+        .confirmed__title {
+            color: #E60000;
+        }
+
+        .recovered__title {
+            color: green;
+        }
+    }
+
+    .last_update span {
+        font-size: 13px;
+    }
+}

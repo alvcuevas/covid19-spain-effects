@@ -1,54 +1,64 @@
+@import '~antd/dist/antd.css';
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #f6f6f6; //f6f6f6
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+        'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f6f6f6; //f6f6f6
 }
 
 .wrapper {
-  padding: 3%;
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-
-  .header,
-  .content {
+    padding: 3%;
+    margin: 0;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-  }
+
+    .header,
+    .content {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .navigation {
-  ul {
-    display: flex;
-    list-style-type: none;
-    padding-left: 0px;
+    margin-top: 15px;
+    
+    ul {
+        display: flex;
+        list-style-type: none;
+        padding-left: 0px;
 
-    li {
-      margin-right: 12px;
+        li {
+            margin-right: 12px;
+        }
     }
-  }
+}
+
+span {
+    font-style: italic;
 }
 
 .loader {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 350px;
+    display: flex;
+    align-items: center;
+    padding-left: 170px;
+    height: 270px;
 }
 
 @media only screen and (max-device-width: 500px) {
-  .regions, .summary {
-    width: 100%;
-  }
+    .regions,
+    .summary {
+        width: 100%;
+    }
 }
 
 @media only screen and (max-device-width: 850px) {
-  .regions, .summary {
-    width: 100%;
-  }
+    .regions,
+    .summary {
+        width: 100%;
+    }
 }
