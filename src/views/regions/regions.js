@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { fetchRegions, fetchRegion } from '../../api';
 import { ResponsiveBar } from '@nivo/bar';
 import Spinner from '../../components/spinner';
+import { Select } from 'antd';
 
 import './regions.scss';
+const { Option } = Select;
 
 const RegionsView = () => {
     const [data, setData] = useState(null);
@@ -48,75 +50,29 @@ const RegionsView = () => {
     }, [selectedRegion]);
 
     const renderRegions = () => (
-        <select onChange={e => setSelectedRegion(e.target.value)}>
-            {regions.map(region => (
-                <option key={region.code} value={region.code}>
-                    {region.name}
-                </option>
-            ))}
-        </select>
+        // <select onChange={e => setSelectedRegion(e.target.value)}>
+        //     {regions.map(region => (
+        //         <option key={region.code} value={region.code}>
+        //             {region.name}
+        //         </option>
+        //     ))}
+        // </select>
+        <>
+            <Select
+                defaultValue='C. Valenciana'
+                style={{ width: 200 }}
+                onChange={value => setSelectedRegion(value)}>
+                {regions.map(region => (
+                    <Option key={region.code} value={region.code}>
+                        {region.name}
+                    </Option>
+                ))}
+            </Select>
+        </>
     );
 
-    // const renderGraph = () => {
-    //     const { confirmed, recovered, deaths, hospitalized, uci } = data;
-
-    //     const plot = [
-    //         {
-    //             name: 'Confirmados',
-    //             totales: confirmed.value,
-    //             estimados: confirmed.estimateTomorrow
-    //         },
-    //         {
-    //             name: 'Recuperados',
-    //             totales: recovered.value,
-    //             estimados: recovered.estimateTomorrow
-    //         },
-    //         {
-    //             name: 'Muertos',
-    //             totales: deaths.value,
-    //             estimados: deaths.estimateTomorrow
-    //         },
-    //         {
-    //             name: 'Hospitalizados',
-    //             totales: hospitalized.value,
-    //             estimados: hospitalized.estimateTomorrow
-    //         },
-    //         { name: 'UCI', totales: uci.value, estimados: uci.estimateTomorrow }
-    //     ];
-
-    //     return (
-    //         <ResponsiveContainer>
-    //             <BarChart
-    //                 width={800}
-    //                 height={350}
-    //                 data={plot}
-    //                 margin={{
-    //                     top: 20
-    //                 }}>
-    //                 <CartesianGrid strokeDasharray='3 3' />
-    //                 <XAxis dataKey='name' />
-    //                 <YAxis
-    //                     domain={[0, 'auto']}
-    //                     yAxisId='left'
-    //                     orientation='left'
-    //                     stroke='#8884d8'
-    //                 />
-    //                 <YAxis
-    //                     yAxisId='right'
-    //                     orientation='right'
-    //                     stroke='#82ca9d'
-    //                 />
-    //                 <Tooltip />
-    //                 <Legend />
-    //                 <Bar yAxisId='left' dataKey='totales' fill='#8884d8' />
-    //                 <Bar yAxisId='right' dataKey='estimados' fill='#82ca9d' />
-    //             </BarChart>
-    //         </ResponsiveContainer>
-    //     );
-    // };
-
     const renderSpinner = () => (
-        <div className="loader">
+        <div className='loader'>
             <Spinner color={'#E8C1A0'} />
         </div>
     );
@@ -164,10 +120,10 @@ const RegionsView = () => {
             <ResponsiveBar
                 data={barsData}
                 keys={['totales', 'estimados']}
-                indexBy="status"
+                indexBy='status'
                 margin={{ top: 25, right: 130, bottom: 100, left: 60 }}
                 padding={0.25}
-                groupMode="grouped"
+                groupMode='grouped'
                 colors={{ scheme: 'set3' }}
                 defs={[
                     {
@@ -265,7 +221,7 @@ const RegionsView = () => {
 
     return (
         <>
-            <div className="regions">
+            <div className='regions'>
                 {renderRegions()}
                 {loading && renderSpinner()}
                 {!loading && data && renderGraph()}

@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import SummaryView from './views/summary/summary';
 import RegionsView from './views/regions/regions';
 import GlobalView from './views/global/global';
+import { Button } from 'antd';
 
 import './App.scss';
 
@@ -19,17 +20,23 @@ const App = () => {
                         <ul>
                             <li>
                                 <Link to='/'>
-                                    <button>Efectos nacionalidad</button>
+                                    <Button type='default'>
+                                        Efecto en país
+                                    </Button>
                                 </Link>
                             </li>
                             <li>
                                 <Link to='/regions'>
-                                    <button>Efectos comunidades</button>
+                                    <Button type='default'>
+                                        Efecto por comunidad
+                                    </Button>
                                 </Link>
                             </li>
                             <li>
                                 <Link to={'/global'}>
-                                    <button>Efectos mundiales</button>
+                                    <Button type='default'>
+                                        Efecto global
+                                    </Button>
                                 </Link>
                             </li>
                         </ul>

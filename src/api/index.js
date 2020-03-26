@@ -34,4 +34,16 @@ const fetchDaily = async () => {
     return data;
 };
 
-export { fetchSummary, fetchRegions, fetchRegion, fetchDaily };
+const fetchWorldSummary = async () => {
+    const { data } = await axios.get(`${API_INTER}`);
+    const { confirmed, recovered, deaths, lastUpdate } = data;
+    return { confirmed, recovered, deaths, lastUpdate };
+};
+
+export {
+    fetchSummary,
+    fetchRegions,
+    fetchRegion,
+    fetchDaily,
+    fetchWorldSummary
+};
