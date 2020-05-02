@@ -1,13 +1,13 @@
-## Representación de los efectos del COVID-19 en España
+## COVID-19 effects visualization on Spain country
 
-### Recursos empleados
+### Resources
 
-- Desarrollo: ReactJS
-- Gráficas: Nivo
-- API Internacional: https://github.com/mathdroid/covid-19-api
-- API España: https://spanish-api-covid19.pedelriomarron.now.sh
+- Development: ReactJS
+- Graphics: Nivo
+- API International Countries: https://github.com/mathdroid/covid-19-api
+- API Spain Country: https://spanish-api-covid19.pedelriomarron.now.sh
 
-### Uso
+### Usage
 
-1. Instalación de dependencias: `yarn install` | `npm install`
-2. Ejecución en un navegador: `yarn start` | `npm start`
+1. Install dependencies: `yarn install` | `npm install`
+2. Run application on browser: `yarn start` | `npm start`
