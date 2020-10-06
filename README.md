@@ -2,7 +2,7 @@
 
 ### Resources
 
-- Development: ReactJS
+- Development: React 16.13
 - Graphics: Nivo
 - API International Countries: https://github.com/mathdroid/covid-19-api
 - API Spain Country: https://spanish-api-covid19.pedelriomarron.now.sh
